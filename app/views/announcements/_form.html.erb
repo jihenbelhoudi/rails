@@ -1,0 +1,36 @@
+<%= form_with(model: announcement,html: { multipart: true }, local: true) do |form| %>
+  <% if announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+      <% announcement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form-group">
+  <div class="field">
+    <%= form.collection_select :category_id, Category.all, :id, :name, {promt:"choose a category"} %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :announcement_name  , :class => "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :desscription%>
+    <%= form.text_area :desscription, id: :announcement_desscription , :class => "form-control"%>
+  </div>
+  <div class="field">
+  <%= form.label :image%>
+  <%= form.file_field :image , :class => "form-control"%>
+</div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  </div>
+<% end %>

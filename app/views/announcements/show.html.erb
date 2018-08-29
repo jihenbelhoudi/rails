@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-success">
+<div class="panel-heading"><p>
+  <strong>Name:</strong>
+  <%= @announcement.name %>
+</p></div>
+
+<div class="panel-body"><p>
+  <strong>Desscription:</strong>
+  <%= @announcement.desscription %>
+</p>
+</div>
+<div class="panel-body"><p>
+<%= image_tag @announcement.image.url(:medium)%>
+</p>
+</div>
+<div class="panel-body"><p>
+  <strong>User:</strong>
+  <%= @announcement.user.email if @announcement.user%>
+</p>
+</div>
+<%= link_to 'Edit', edit_announcement_path(@announcement),:class=>"btn btn-info" %> |
+<%= link_to 'Back', announcements_path ,:class=>"btn btn-info"%>
